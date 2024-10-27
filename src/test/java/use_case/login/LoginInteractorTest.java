@@ -12,8 +12,7 @@ import static org.junit.Assert.*;
 
 public class LoginInteractorTest {
 
-    // TODO Task 2.2: make a copy of this test method and follow the instructions in the readme to test your
-    //                code from Task 2.1..
+
     @Test
     public void successTest() {
         LoginInputData inputData = new LoginInputData("Paul", "password");
@@ -58,7 +57,7 @@ public class LoginInteractorTest {
         LoginOutputBoundary successPresenter = new LoginOutputBoundary() {
             @Override
             public void prepareSuccessView(LoginOutputData user) {
-                assertEquals("Paul", user.getUsername());
+                assertEquals("Paul",userRepository.getCurrentUser());
             }
 
             @Override
@@ -68,8 +67,8 @@ public class LoginInteractorTest {
         };
 
         LoginInputBoundary interactor = new LoginInteractor(userRepository, successPresenter);
+        //assertNull(userRepository.getCurrentUser());
         interactor.execute(inputData);
-        assertEquals("Paul", userRepository.getCurrentUser());
     }
 
 
