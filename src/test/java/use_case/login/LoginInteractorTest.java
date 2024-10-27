@@ -53,7 +53,7 @@ public class LoginInteractorTest {
         UserFactory factory = new CommonUserFactory();
         User user = factory.create("Paul", "password");
         userRepository.save(user);
-        userRepository.setCurrentUser("Paul");
+        userRepository.setCurrentUser(user.getName());
         String return_name = userRepository.getCurrentUser();
 
         // This creates a successPresenter that tests whether the test case is as we expect.
