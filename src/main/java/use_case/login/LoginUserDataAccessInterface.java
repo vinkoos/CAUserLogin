@@ -27,4 +27,9 @@ public interface LoginUserDataAccessInterface {
      */
     User get(String username);
 
+    /**
+     * Reset name with recent name.
+     * @param name the recent username.
+     */
+    void setCurrentUser(String name);
 }
