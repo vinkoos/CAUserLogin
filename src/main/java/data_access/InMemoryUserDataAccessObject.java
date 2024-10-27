@@ -28,6 +28,7 @@ public class InMemoryUserDataAccessObject implements SignupUserDataAccessInterfa
     @Override
     public void save(User user) {
         users.put(user.getName(), user);
+        this.currentUser = user.getName();
     }
 
     @Override
@@ -48,6 +49,6 @@ public class InMemoryUserDataAccessObject implements SignupUserDataAccessInterfa
 
     @Override
     public String getCurrentUser() {
-        return currentUser;
+        return this.currentUser;
     }
 }
