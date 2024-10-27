@@ -110,7 +110,7 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface,
     }
 
     @Override
-    public String getCurrentUser(User user) {
-        return user.getName();
+    public String getCurrentUser() {
+        return null;
     }
 }
