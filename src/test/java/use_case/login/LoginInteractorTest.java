@@ -52,12 +52,13 @@ public class LoginInteractorTest {
         UserFactory factory = new CommonUserFactory();
         User user = factory.create("Paul", "password");
         userRepository.save(user);
+        assertNull(userRepository.getCurrentUser());
 
         // This creates a successPresenter that tests whether the test case is as we expect.
         LoginOutputBoundary successPresenter = new LoginOutputBoundary() {
             @Override
             public void prepareSuccessView(LoginOutputData user) {
-                assertEquals("Paul",userRepository.getCurrentUser());
+                assertEquals("Paul",user.getUsername());
             }
 
             @Override
@@ -67,8 +68,8 @@ public class LoginInteractorTest {
         };
 
         LoginInputBoundary interactor = new LoginInteractor(userRepository, successPresenter);
-        //assertNull(userRepository.getCurrentUser());
         interactor.execute(inputData);
+        assertEquals("Paul",userRepository.getCurrentUser());
     }
 
 
